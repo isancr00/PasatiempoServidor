@@ -1,0 +1,57 @@
+html{
+    background-color: white;
+}
+
+table{
+  border: black;
+}
+
+td{
+  width: auto;
+}
+
+h1{
+    text-align: center;
+    color: black;
+    font-family: monospace;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #AFB6B5;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    padding: 8px;
+    color: black;
+  }
+
+  li a:hover{
+      background-color: #11D4B2;
+  }
+
+
+
+
+.juego{
+ float: left;
+}
+
+.texto{
+  color: white;
+}
+
+.seleccionable{
+  text-align: center;
+}
+
+
+
