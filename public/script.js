@@ -1,6 +1,5 @@
 
 var diccionario = [];
-diccionario.push("nací", "nace", "remato", "tolero");
 var words;
 
 function getJson(){
@@ -13,6 +12,11 @@ function getJson(){
     request.onload = function() {
         const superHeroes = request.response;
         words = superHeroes;
+        for(var i=0;i<words.length;i++){
+            for(var j=0;j<words[i].length;j++){
+                diccionario.push(words[i][j]);
+            }
+        }
         console.log(superHeroes);
       }
 }
@@ -69,7 +73,7 @@ function comprobarPalabra(id){
 
 }
 
-function comprobarCompleto(){
+function comprobarCompleto(id){
     var form = document.getElementById("datos");
 
     for(var i=0;i<form.length;i++){
@@ -78,7 +82,7 @@ function comprobarCompleto(){
         }
     }
     
-    if(isCorrecto()){
+    if(isCorrecto(id)){
         alert("El crucigrama es correcto");
     }else{
         alert("El crucigrama presenta errores");
@@ -92,7 +96,7 @@ function isCorrecto(pos){
     var devuelve = true;
     var correcto = words[pos];
 
-    for(var i=0;i<12;i++){
+    for(var i=0;i<words[pos].length;i++){
         var id = "letra1P" + (i+1);
         var palabra = construirPalabra(id);
 
