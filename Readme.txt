@@ -1,0 +1,1 @@
+La solución elegida es utilizar el framework backend Expressjs debido a su fácil utilización.
