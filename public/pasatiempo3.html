@@ -6,7 +6,7 @@
         <title>Pasatiempo en cascada 3</title>
     </head>
 
-    <body onload="preguntaCookies(); extraerDiccionario(); getJson()">
+    <body onload="preguntaCookies(); extraerDiccionario()">
         <h1>PASATIEMPO EN CASCADA</h1>
         <div class="menuDesplegable">
           <ul>
@@ -14,6 +14,8 @@
             <li><a href="#guardarEstado" onclick="guardarEstado()">Guardar estado actual del pasatiempo</a></li>
             <li><a href="#recuperarEstado" onclick="cargarEstado()">Recuperar estado del pasatiempo</a></li>
             <li><a href="#borrarAlmacenamiento" onclick="limpiarAlmacenamiento()">Borrar pasatiempo guardado</a></li>
+            <li><a href="#solucion" onclick="comprobarSolucion(2)">Comprobar solucion</a></li>
+
 
             <li style="float:right" onclick="acercaDe()"><a href="#about">Acerca de:</a></li>
           </ul>
@@ -25,102 +27,102 @@
 
                 <table id="table">
                     <tr>
-                      <td><input type="text"   id="letra1P1"   onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"  id="letra2P1" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra3P1"   onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra4P1"   onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text"   id="letra1P1"    maxlength="1"></td>
+                      <td><input type="text"  id="letra2P1"  maxlength="1"></td>
+                      <td><input type="text"   id="letra3P1"    maxlength="1"></td>
+                      <td><input type="text"   id="letra4P1"    maxlength="1"></td>
                       <td>1</td>
     
                     </tr>
         
                     <tr>
-                      <td><input type="text"   id="letra1P2"  onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra2P2"  onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra3P2" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra4P2" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text"   id="letra1P2"   maxlength="1"></td>
+                      <td><input type="text"   id="letra2P2"   maxlength="1"></td>
+                      <td><input type="text" id="letra3P2"  maxlength="1"></td>
+                      <td><input type="text"   id="letra4P2"  maxlength="1"></td>
                     </tr>
         
                     <tr>
-                      <td><input type="text"   id="letra1P3" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra2P3" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra3P3" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"    id="letra4P3" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text"   id="letra1P3"  maxlength="1"></td>
+                      <td><input type="text"   id="letra2P3"  maxlength="1"></td>
+                      <td><input type="text"   id="letra3P3"  maxlength="1"></td>
+                      <td><input type="text"    id="letra4P3"  maxlength="1"></td>
                     </tr>
         
                     <tr>
-                      <td><input type="text"   id="letra1P4" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"    id="letra2P4" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra3P4" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra4P4" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text"   id="letra1P4"  maxlength="1"></td>
+                      <td><input type="text"    id="letra2P4"  maxlength="1"></td>
+                      <td><input type="text"   id="letra3P4"  maxlength="1"></td>
+                      <td><input type="text"   id="letra4P4"  maxlength="1"></td>
                     </tr>
         
                     <tr>
-                      <td><input type="text"   id="letra1P5" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"    id="letra2P5" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"    id="letra3P5" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra4P5" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text"   id="letra1P5"  maxlength="1"></td>
+                      <td><input type="text"    id="letra2P5"  maxlength="1"></td>
+                      <td><input type="text"    id="letra3P5"  maxlength="1"></td>
+                      <td><input type="text"   id="letra4P5"  maxlength="1"></td>
                     </tr>
         
                     <tr>
-                      <td><input type="text"   id="letra1P6" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra2P6" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra3P6" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra4P6" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text"   id="letra1P6"  maxlength="1"></td>
+                      <td><input type="text"   id="letra2P6"  maxlength="1"></td>
+                      <td><input type="text"   id="letra3P6"  maxlength="1"></td>
+                      <td><input type="text"   id="letra4P6"  maxlength="1"></td>
                       <td>2</td>               
                     </tr> 
                     <tr>
-                      <td><input type="text"   id="letra1P7" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra2P7" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"   id="letra3P7" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"    id="letra4P7" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra5P7" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra6P7" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text"   id="letra1P7"  maxlength="1"></td>
+                      <td><input type="text"   id="letra2P7"  maxlength="1"></td>
+                      <td><input type="text"   id="letra3P7"  maxlength="1"></td>
+                      <td><input type="text"    id="letra4P7"  maxlength="1"></td>
+                      <td><input type="text" id="letra5P7"  maxlength="1"></td>
+                      <td><input type="text" id="letra6P7"  maxlength="1"></td>
                       <td>3</td>               
                     </tr>
         
                     <tr>
-                      <td><input type="text" id="letra1P8" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra2P8" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra3P8" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra4P8" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra5P8" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra6P8" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text" id="letra1P8"  maxlength="1"></td>
+                      <td><input type="text" id="letra2P8"  maxlength="1"></td>
+                      <td><input type="text" id="letra3P8"  maxlength="1"></td>
+                      <td><input type="text" id="letra4P8"  maxlength="1"></td>
+                      <td><input type="text" id="letra5P8"  maxlength="1"></td>
+                      <td><input type="text" id="letra6P8"  maxlength="1"></td>
                     </tr>
         
                     <tr>
-                      <td><input type="text" id="letra1P9" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra2P9" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra3P9" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra4P9" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra5P9" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra6P9" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text" id="letra1P9"  maxlength="1"></td>
+                      <td><input type="text" id="letra2P9"  maxlength="1"></td>
+                      <td><input type="text" id="letra3P9"  maxlength="1"></td>
+                      <td><input type="text" id="letra4P9"  maxlength="1"></td>
+                      <td><input type="text" id="letra5P9"  maxlength="1"></td>
+                      <td><input type="text" id="letra6P9"  maxlength="1"></td>
                     </tr>
         
                     <tr>
-                      <td><input type="text" id="letra1P10" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra2P10" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra3P10" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra4P10" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra5P10" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra6P10" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text" id="letra1P10"  maxlength="1"></td>
+                      <td><input type="text" id="letra2P10"  maxlength="1"></td>
+                      <td><input type="text" id="letra3P10"  maxlength="1"></td>
+                      <td><input type="text" id="letra4P10"  maxlength="1"></td>
+                      <td><input type="text" id="letra5P10"  maxlength="1"></td>
+                      <td><input type="text" id="letra6P10"  maxlength="1"></td>
                     </tr>
         
                     <tr>
-                      <td><input type="text" id="letra1P11" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra2P11" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra3P11" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra4P11" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra5P11" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra6P11" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text" id="letra1P11"  maxlength="1"></td>
+                      <td><input type="text" id="letra2P11"  maxlength="1"></td>
+                      <td><input type="text" id="letra3P11"  maxlength="1"></td>
+                      <td><input type="text" id="letra4P11"  maxlength="1"></td>
+                      <td><input type="text" id="letra5P11"  maxlength="1"></td>
+                      <td><input type="text" id="letra6P11"  maxlength="1"></td>
                     </tr>
         
                     <tr>
-                      <td><input type="text" id="letra1P12" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra2P12" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra3P12" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra4P12" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text"  id="letra5P12" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
-                      <td><input type="text" id="letra6P12" onchange="comprobarPalabra(id); comprobarCompleto(2)" maxlength="1"></td>
+                      <td><input type="text" id="letra1P12"  maxlength="1"></td>
+                      <td><input type="text" id="letra2P12"  maxlength="1"></td>
+                      <td><input type="text" id="letra3P12"  maxlength="1"></td>
+                      <td><input type="text" id="letra4P12"  maxlength="1"></td>
+                      <td><input type="text"  id="letra5P12"  maxlength="1"></td>
+                      <td><input type="text" id="letra6P12"  maxlength="1"></td>
                       <td>4</td>               
                     </tr> 
                 </table>
@@ -132,8 +134,7 @@
             <p>1.Nombre que se da a una persona en vez del suyo propio</p>
             <p> 2. Pasta untable elaborada habitualmente a partir de carne picada o hígado</p>
             <p> 3.Mineral compuesto de sílice </p>
-            <p> 4. Cargo espiritual del cura párroco de almas.
-            </p>
+            <p> 4. Cargo espiritual del cura párroco de almas.</p>
           </div>
 
           <div class="pista">

@@ -1,7 +1,7 @@
 
 var diccionario = [];
-var words;
-
+var words = 12;
+/*
 function getJson(){
     const requestURL = 'http://127.0.0.1:3000/soluciones.json';
     const request = new XMLHttpRequest();
@@ -38,7 +38,7 @@ function extraerDiccionario(){
     xhr.open("GET", "https://ordenalfabetix.unileon.es/aw/diccionario.txt", true);
     xhr.send();
 }
-
+*/
 function preguntaCookies(){
     var confirmacion = confirm("¿Desea que se almacenen datos locales del pasatiempo? De esta manera, puede guardar y cargar su progreso");
     if(confirmacion){
@@ -59,7 +59,7 @@ function acercaDe(){
     pestania.document.write(contenido);
     
 }
-
+/*
 function comprobarPalabra(id){
     var palabraActual = "";
     var idString = String(id);
@@ -110,6 +110,7 @@ function isCorrecto(pos){
     return devuelve;
 
 }
+*/
 
 function construirPalabra(id){
     var idString = id.toString();
@@ -151,10 +152,18 @@ function construirPalabra(id){
 }
 
 function estaEnDiccionario(palabraActual){
-    if(!diccionario.includes(palabraActual.toLowerCase())){
-        alert("La palabra no está contenida en el diccionario")
-    }
-   
+    fetch('/game', {
+        method: 'POST',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify({"palabraActual": palabraActual})
+    }).then(response =>{ 
+        if(response.status != 200){
+            alert("La palabra " + palabraActual + " no está en el diccionario");
+        }
+    })
+    
 }
 
 
@@ -186,7 +195,7 @@ function cargarEstado(){
 function limpiarAlmacenamiento(){
     localStorage.clear();
 }
-
+/*
 function palabraCompleta(idString){
     var completa = false;
     var letraString = idString.charAt(5);
@@ -244,7 +253,7 @@ function palabraCompleta(idString){
     }
 
     return completa
-}
+}*/
 
 
 function getPista(){
@@ -265,4 +274,27 @@ function getPista(){
     contenido = "<!DOCTYPE html><html><head><title>Palabras pista</title></head><body><h1>PISTA SOLICITADA</h1><div><p>" + resultado + "</p></div></body></html>";
     pestania.document.write(contenido);
 
+}
+
+function esCorrecta(palabraActual,idPasatiempo){
+    fetch('/game', {
+        method: 'POST',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify({"palabraActual": palabraActual, "idPasatiempo":idPasatiempo})
+    }).then(response =>{ 
+        if(response.status != 200){
+            alert("La palabra " + palabraActual + " no está en la solución");
+        }
+    })
+}
+
+function comprobarSolucion(idPasatiempo){
+    for(var i=0; i<words;i++){
+        var id = "letra1P" + (i+1);
+        var palabra = construirPalabra(id);
+        //estaEnDiccionario(palabra);
+        esCorrecta(palabra,idPasatiempo);
+    }
 }
