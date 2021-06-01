@@ -1,6 +1,7 @@
 
 var diccionario = [];
 var words = 12;
+var palabras = [];
 /*
 function getJson(){
     const requestURL = 'http://127.0.0.1:3000/soluciones.json';
@@ -276,16 +277,19 @@ function getPista(){
 
 }
 
-function esCorrecta(palabraActual,idPasatiempo){
+function esCorrecta(palabras,idPasatiempo){
     fetch('/game', {
         method: 'POST',
         headers:{
             'Content-Type' : 'application/json'
         },
-        body : JSON.stringify({"palabraActual": palabraActual, "idPasatiempo":idPasatiempo})
-    }).then(response =>{ 
+        body : JSON.stringify({"palabras": palabras, "idPasatiempo":idPasatiempo})
+    }).then(response =>{
+        console.log(response);
         if(response.status != 200){
-            alert("La palabra " + palabraActual + " no está en la solución");
+            alert("El pasatiempo es incorrecto");
+        }else{
+            alert("El pasatiempo es correcto");
         }
     })
 }
@@ -295,6 +299,10 @@ function comprobarSolucion(idPasatiempo){
         var id = "letra1P" + (i+1);
         var palabra = construirPalabra(id);
         //estaEnDiccionario(palabra);
-        esCorrecta(palabra,idPasatiempo);
+        palabras[i] = palabra;
     }
+
+    esCorrecta(palabras,idPasatiempo)
+
+
 }

@@ -4,45 +4,58 @@ const app = express();
 const router = express.Router();
 const fetch = require('node-fetch');
 
+const fs = require('fs');
+const data = fs.readFileSync('soluciones.json', 'utf8');
+let words = JSON.parse(data);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-async function comprobarPalabra(palabraActual){
+async function comprobarPalabra(palabras){
     const diccionario = await fetch('https://ordenalfabetix.unileon.es/aw/diccionario.txt').then(response => response.text());
 
-    if(diccionario.includes(palabraActual) && palabraActual.length >= 4){
-        return true;
+    for(var i=0; i< palabras.length;i++){
+        var palabraActual = palabras[i]; 
+
+        if(diccionario.includes(palabraActual)){
+            return true;
+        }
+    
     }
 
+   
     return false;
 
 }
 
-async function esCorrecta(palabraActual,idPasatiempo){
-    const solucion = await fetch('soluciones.json').then(response => response.text);
+function esCorrecta(palabras,idPasatiempo){
 
-    if(solucion[idPasatiempo].includes(palabraActual)){
-        return true;
+    let correcto = true;
+    for(var i=0; i< palabras.length;i++){
+        var palabraActual = palabras[i]; 
+
+        if(words[idPasatiempo][i] != palabraActual){
+            return false;
+        }
+    
     }
 
-    return false;
+
+    return correcto;
 }
 
 router.route('/')
     .post(function(req,res){
-        fetch('/',{
-            method: "POST",
-            headers : {
-                'Content-Type' : 'application/json'
-            },
-            body: new File(Blob(),'soluciones.json')
-        });
-        
         console.log(req.body);
-        const promise = comprobarPalabra(req.body.palabraActual) && esCorrecta(req.body.palabraActual);
+        const promise = comprobarPalabra(req.body.palabras);
+        const correcta = esCorrecta(req.body.palabras, req.body.idPasatiempo);
+
         promise.then(result => {
-            if(result)
+            if(result && correcta){
                 res.status(200).send();
+            }else{
+                res.status(600).send();
+            }
         })
     })
 
